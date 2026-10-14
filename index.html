@@ -58,7 +58,7 @@
 
     <section class="panel questionnaire" id="questionnaire" aria-labelledby="step3-title">
       <div class="step-title"><div class="step-no">03</div><div><h3 id="step3-title">填寫合作需求問卷</h3><p>大約 3 分鐘，幫助我們在第一次對話前了解品牌與拍攝目標。</p></div></div>
-      <form id="intake" novalidate autocomplete="on">
+      <form id="intake" novalidate autocomplete="off">
         <div class="qgroup"><span class="qlabel">01 / 關於你</span>
           <div class="qitem"><label for="q-name">Q1. 你的名字／品牌名稱 <span class="req">＊</span></label><input id="q-name" name="name" required placeholder="請填寫姓名或品牌名稱" autocomplete="organization"></div>
           <div class="qitem"><label for="q-ig">Q2. 你的 Instagram 帳號或品牌官網</label><input id="q-ig" name="social" placeholder="@yourbrand／網站連結；沒有可填「無」"></div>
@@ -100,7 +100,7 @@
             <label class="option"><input type="checkbox" name="pain" value="作品質感未達期待"><span>作品質感未達期待</span></label>
             <label class="option"><input type="checkbox" name="pain" value="其他／想先討論"><span>其他／想先討論</span></label>
           </div></fieldset>
-          <div class="qitem"><label for="q-reference">有喜歡的品牌、影像風格或參考作品嗎？<small>（可貼連結）</small></label><input id="q-reference" name="reference" placeholder="https://…"></div>
+          <div class="qitem"><label for="q-reference">有喜歡的品牌、影像風格或參考作品嗎？<small>（可貼連結）</small></label><textarea id="q-reference" name="creative_reference_notes" rows="2" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="貼上 IG／YouTube 網址，或寫下喜歡的品牌、影片風格（可多筆）"></textarea></div>
         </div>
         <div class="qgroup"><span class="qlabel">04 / 關於這次合作</span>
           <fieldset class="qitem"><legend>Q8. 這次預算大概在哪個範圍？</legend><div class="option-grid one-col">
@@ -133,7 +133,7 @@
     <div class="qr-row"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJsAAACbCAIAAAD6A37bAAADZUlEQVR4nO3dQY4UMQxGYQZxCVaI+x8KseIYzd7SpLBiO+H1+3ZouquK/hXJSpzUx+v1+iKQr6cfQMVMlMZEaUyU5lv49/efP2Zu/OfX73//8PqpwqVS/4XC7wanfknHKI2J0pgojYnSxMooSNUva4WVwthTFd5o7JkdozQmSmOiNCZK81AZBYVTKusrj80oFRYsKX2/pGOUxkRpTJTGRGlyldGYdeHQt7iWckmRFThGaUyUxkRpTJTm0soo6OskWlc3Y71ChRyjNCZKY6I0JkqTq4zGpkVSN+r78Pq7O3VT3y/pGKUxURoTpTFRmofK6JJJk9TMTuFfC439ko5RGhOlMVEaE6WJldElzTKpgmXsmfvapgs5RmlMlMZEaUyU5iOc9DjWd1O4c61vX9va2HlG7k17ayZKY6I0JkqTW03r24hfuN1s7GiB1F/7qjlPeoQzURoTpTFRmoc5oz537gLr62BK3XeHY5TGRGlMlMZEaWJltKPvPOnC6ZidmaxTy2epx3CM0pgojYnSmChNrs8oGDtxsbC6SV059VQ7CotKxyiNidKYKI2J0uTmjC6ZcBkrlFLf3WGfkT5lojQmSmOiNA+VUWEpVFj7rD+8o/B4o7F6LXCM0pgojYnSmChN5a79sUMUx9qOTrUs7XzXMUpjojQmSmOiNFtnYPft1SqUOiXy1HqZc0b6lInSmCiNidLkdu2PnWd0ScESjD3GzlyVY5TGRGlMlMZEaR7mjAr7fVJlxdh2+VOraTtcTXsvJkpjojQmSvNQGRXamZ1Z1yB95UzfwQOpD9tn9NZMlMZEaUyUprIy6nu7WWFZEfStHqbsPLOraXAmSmOiNCZKU3kG9o5Tb9ooXB881bJkZQRnojQmSmOiNHHO6NR701KrWkFhB9N6FS+l8NAC96a9NROlMVEaE6XJdWDvOPWi+p2VqcLTndYKJ6ccozQmSmOiNCZKk+szOvVasfWVd/qzg0sWyHYu5RilMVEaE6UxUZq5vWmF+pbPCqu5vqrKDuz3YqI0JkpjojT/ZWUUXNL6XNijlLpv4BilMVEaE6UxUZpcZTS2QBb07bwvnKzp61FKPaRjlMZEaUyUxkRptt6bVqiv6Og7eztl7PWzjlEaE6UxURoTpbnlPCNVcYzSmCiNidKYKM1fJeAdUahcxM0AAAAASUVORK5CYII=" alt="掃描加入光貓影像 LINE 官方帳號 @061zuwtq" width="108" height="108"><div><strong>掃描加入官方 LINE</strong><p>手機可直接點選上方 LINE 連結。<br>電腦可用手機掃碼，貼上剛剛複製的合作需求。</p></div></div>
     <p class="contact-note">備註：此頁不會自動送出或保存問卷。請先複製內容，再於 IG／LINE 私訊貼上；價格、交付範圍及製作日期將由雙方確認。</p>
   </section></main>
-  <footer class="foot"><div class="shell footin"><div class="brand">OPMO IMAGE<small>光貓影像</small></div><div class="disclaimer">© OPMO IMAGE · Pricing Preview V5<br>價格為單次影像製作參考，特殊拍攝、人員、場地與額外後製另行評估。<br><a href="https://www.opmo-image.com/" target="_blank" rel="noopener noreferrer">官方網站 ↗</a></div></div></footer>
+  <footer class="foot"><div class="shell footin"><div class="brand">OPMO IMAGE<small>光貓影像</small></div><div class="disclaimer">© OPMO IMAGE · Pricing Preview V5.1<br>價格為單次影像製作參考，特殊拍攝、人員、場地與額外後製另行評估。<br><a href="https://www.opmo-image.com/" target="_blank" rel="noopener noreferrer">官方網站 ↗</a></div></div></footer>
   <script>
   (()=>{
     'use strict';
@@ -200,7 +200,7 @@
         'Q5. 目標受眾：'+textVal('target'),
         'Q6. 目前內容經營狀態：'+checkedVals('status'),
         'Q7. 目前困難：'+checkedVals('pain'),
-        '參考作品：'+textVal('reference'),
+        '參考作品：'+textVal('creative_reference_notes'),
         'Q8. 預算範圍：'+checkedVals('budget'),
         '拍攝地點／檔期：'+textVal('location'),
         'Q9. 其他需求：'+textVal('other'),
