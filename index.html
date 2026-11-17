@@ -29,6 +29,18 @@
     .option-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.option-grid.one-col{grid-template-columns:1fr}.option{display:flex;align-items:center;gap:11px;padding:12px 13px;min-height:47px;border:1px solid #d7ddd3;border-radius:3px;background:#fff;color:#435147;font-size:13px;cursor:pointer;transition:background .12s,border .12s}.option:hover{border-color:#8ca58b}.option:has(input:checked){border-color:#426048;background:#eef4eb;color:#173724}.option:focus-within{outline:2px solid #a2b39c;outline-offset:2px}.option input{width:18px;height:18px;flex:0 0 18px;margin:0;accent-color:#395a43;cursor:pointer}.option span{line-height:1.5}.privacy-note{font-size:12px;color:var(--muted);border-left:3px solid #becabd;padding:12px 16px;background:#f3f5f0;margin:0}.copy-status{font-size:12px;color:#326644;margin:9px 0;min-height:0}.copy-status.error{color:#a14a32}#copy-fallback{margin:15px 0}#copy-fallback label{display:block;margin-bottom:8px;font-size:12px}#copy-text{width:100%;font-size:12px;border:1px solid #9cb59d;border-radius:3px;padding:12px;background:white}#copy-enquiry{min-height:48px}
     .qr-row{display:flex;gap:18px;align-items:center;padding:16px 18px;margin-bottom:18px;background:#fffefa;border:1px solid #cbd5c9}.qr-row img{flex:0 0 108px;width:108px;height:108px;image-rendering:pixelated}.qr-row strong{font-size:15px}.qr-row p{font-size:12px;color:var(--muted);margin:5px 0 0;line-height:1.7}
     @media(max-width:680px){.option-grid{grid-template-columns:1fr}.qgroup+.qgroup{padding-top:24px}.qitem{margin-bottom:20px}.option{min-height:50px}.qr-row{gap:12px;padding:12px}.qr-row img{height:85px;width:85px;flex-basis:85px}}
+
+    .video-options{display:grid;gap:12px}
+    .standard-offer{min-width:0}
+    .standard-offer .choice{width:100%;min-height:0}
+    .video-options .price{white-space:normal}
+    .video-count{min-width:0;margin:14px 0 0;padding:0 1px;border:0}
+    .video-count legend{margin-bottom:8px;padding:0;font-size:13px;font-weight:650}
+    .count-options{display:flex;flex-wrap:wrap;gap:8px}
+    .count-option{min-width:64px;min-height:44px;padding:6px 13px;background:var(--white);color:var(--green);border:1px solid var(--line);border-radius:3px}
+    .count-option:hover{border-color:var(--green)}
+    .count-option[aria-pressed="true"]{background:var(--green);color:white;border-color:var(--green)}
+    .sum-price.range-price{font-size:clamp(20px,3.4vw,25px);letter-spacing:-.02em}
   </style>
 </head>
 <body>
@@ -37,17 +49,42 @@
   <main class="shell"><section class="intro"><div><div class="eyebrow">BUILD YOUR PROJECT</div><h2>合作詢價</h2></div><p>選擇方案、填寫需求，複製完整內容後透過官方 LINE 聯絡。<br>正式費用依製作規模與內容需求確認。</p></section>
   <div class="layout"><div>
     <section class="panel" aria-labelledby="step1-title"><div class="step-title"><div class="step-no">01</div><div><h3 id="step1-title">選擇影像服務</h3><p>先告訴我們，這次需要製作什麼內容。</p></div></div><div class="cards" id="service-choices">
-      <button class="choice" type="button" data-service="video" aria-pressed="true"><span class="title">商業短影音</span><span class="note">完整企劃／拍攝／剪輯</span></button>
+      <button class="choice" type="button" data-service="video" aria-pressed="true"><span class="title">短影音製作</span><span class="note">新客體驗／商業短影音／餐廳故事</span></button>
       <button class="choice" type="button" data-service="photo" aria-pressed="false"><span class="title">商業平面攝影</span><span class="note">商品／餐飲／空間／形象</span></button>
       <button class="choice" type="button" data-service="mixed" aria-pressed="false"><span class="title">照片＋影片</span><span class="note">整合品牌視覺製作</span></button>
     </div></section>
-    <section class="panel" aria-labelledby="step2-title"><div class="step-title"><div class="step-no">02</div><div><h3 id="step2-title">選擇合作內容</h3><p id="step2-sub">選擇影片支數；以下顯示的是「每支」參考價格。</p></div></div>
-      <div id="video-section"><div class="cards four" id="video-choices">
-        <button class="choice" type="button" data-package="trial" aria-pressed="true"><span class="badge">首次合作限定</span><span class="title">初次影像體驗 · 1 支</span><span class="price">NT$12,800 <small>／支</small></span><span class="note">單一主題・輕量製作</span></button>
-        <button class="choice" type="button" data-package="one" aria-pressed="false"><span class="title">正式單支 · 1 支</span><span class="price">NT$15,000 起 <small>／支</small></span><span class="note">完整創意企劃與影像製作</span></button>
-        <button class="choice" type="button" data-package="three" aria-pressed="false"><span class="title">品牌企劃 · 3 支</span><span class="price">NT$11,000 起 <small>／支</small></span><span class="note">適合一次完整品牌專案</span></button>
-        <button class="choice" type="button" data-package="six" aria-pressed="false"><span class="title">系列製作 · 6 支</span><span class="price">NT$10,000 起 <small>／支</small></span><span class="note">適合持續性的系列內容</span></button>
-      </div><div class="boxnote" id="video-conditions">首次體驗限新客戶首次使用一次，適用單一主題、簡單場景、基礎拍攝安排與剪輯，不包含完整廣告創意開發。正式製作則包含企劃、腳本規劃、拍攝與後製。</div></div>
+    <section class="panel" aria-labelledby="step2-title"><div class="step-title"><div class="step-no">02</div><div><h3 id="step2-title">選擇合作內容</h3><p id="step2-sub">先選製作方式，再確認預計製作支數。</p></div></div>
+      <div id="video-section">
+        <div class="video-options" id="video-choices">
+          <div class="standard-offer">
+            <button class="choice" type="button" data-package="commercial" aria-pressed="true">
+              <span class="title">商業短影音</span>
+              <span class="price">NT$ 15,000～20,000 <small>／支</small></span>
+              <span class="note">適合已有明確拍攝主題的品牌。包含腳本整理、拍攝與剪輯。</span>
+            </button>
+            <fieldset class="video-count" id="video-count">
+              <legend>預計製作支數</legend>
+              <div class="count-options" id="video-count-choices">
+                <button class="count-option" type="button" data-count="1" aria-pressed="true">1 支</button>
+                <button class="count-option" type="button" data-count="3" aria-pressed="false">3 支</button>
+                <button class="count-option" type="button" data-count="6" aria-pressed="false">6 支</button>
+              </div>
+            </fieldset>
+          </div>
+          <div class="cards four">
+            <button class="choice" type="button" data-package="trial" aria-pressed="false">
+              <span class="title">首次影像體驗 · 1 支</span>
+              <span class="price">NT$ 12,800 <small>／支</small></span>
+              <span class="note">新客限一次。單一主題、簡單場景、基礎拍攝與剪輯。</span>
+            </button>
+            <button class="choice" type="button" data-package="restaurant" aria-pressed="false">
+              <span class="title">餐廳故事短片</span>
+              <span class="price">NT$ 24,000 起 <small>／案</small></span>
+              <span class="note">從主廚訪談出發，找出能代表餐廳的主題，拍成一支故事短片，隨片附一張 Reel 封面圖。</span>
+            </button>
+          </div>
+        </div>
+      </div>
       <div id="photo-section" class="hide"><div class="cards" id="photo-choices">
         <button class="choice" type="button" data-photo="six" aria-pressed="true"><span class="title">單點影像補強 · 6 張</span><span class="price">NT$6,000</span><span class="note">單一主題・輕量拍攝與基本精修</span></button>
         <button class="choice" type="button" data-photo="twelve" aria-pressed="false"><span class="title">品牌影像 · 12 張</span><span class="price">NT$11,000 起</span><span class="note">一般商業拍攝與基本精修</span></button>
@@ -116,7 +153,7 @@
       </form>
       <p class="privacy-note">這份問卷不會自動傳送或儲存到光貓影像；填完後請點「複製完整方案＋問卷」，再貼到官方 LINE。</p>
     </section>
-  </div><aside class="summary" aria-live="polite" aria-atomic="false"><div class="sum-eyebrow">YOUR SELECTION / 001</div><h3>詢價摘要</h3><div class="sum-row"><span>服務類型</span><span id="sum-service">商業短影音</span></div><div class="sum-row"><span>合作內容</span><span id="sum-package">首次影像體驗・1 支</span></div><div class="sum-row"><span>計價方式</span><span id="sum-unit">固定參考價</span></div><div class="sum-price-label" id="sum-price-label">參考價格</div><div class="sum-price" id="sum-price">NT$12,800</div><div class="total-note" id="sum-note">首次體驗為限定規格。實際費用與製作細節仍需雙方確認。</div>
+  </div><aside class="summary" aria-live="polite" aria-atomic="false"><div class="sum-eyebrow">YOUR SELECTION / 001</div><h3>詢價摘要</h3><div class="sum-row"><span>服務類型</span><span id="sum-service">短影音製作</span></div><div class="sum-row"><span>合作內容</span><span id="sum-package">商業短影音・1 支</span></div><div class="sum-row"><span>計價方式</span><span id="sum-unit">依製作範圍報價</span></div><div class="sum-price-label" id="sum-price-label">每支參考價</div><div class="sum-price range-price" id="sum-price">NT$ 15,000～20,000</div><div class="total-note" id="sum-note">正式總價依腳本、拍攝時段與後製範圍確認。</div>
     <button class="btn primary" type="button" id="copy-enquiry">▣ 複製完整方案＋問卷內容</button>
     <div id="copy-status" class="copy-status" role="status" aria-live="polite"></div>
     <div id="copy-fallback" class="hide" aria-label="詢價內容備用複製區"><label for="copy-text">若無法自動複製，請長按選取以下內容：</label><textarea id="copy-text" readonly rows="6"></textarea></div>
@@ -132,20 +169,20 @@
     <div class="qr-row"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASgAAAEoAQAAAADDfFG0AAABfklEQVR42u2Zy27EMAwDOUX//5fZg2Tl5WB7bAHmkrWXp4FE0wrWL54vRRVVVFH9NdW3JFG/3W9ZmLVyeN15yUXNwpIQkmc3vB68GhCWkC0Zee2G15vKVDMOp/jXB5UbFFdg4XXrx0UJIxkjfCqy8Lry4tSQc0rObngdD74tqxNvDhZeFxVCEgjLGr9n/RNet/qim9G99CmLJa9u6ku2sBGCpmgByV97/6pisvB415RbeD1VRshgOtnTMSP+tfV7jMGrEydLkPp6rS9b42Irw8a/Xvyrq8ptYqLv3OH1zPcdu6RyeNr65QU0vJ7565jf0FlMc1aG17W+zjOJRrSGYDkfd/5FNaLLtmYQFv/a54m+PpZzSZLrGknyxK4fPemBbsB1AlTdhdfOv2RVCOtPQzh5Ys/r+D6kFVtn0+G1UQFaE692MqDX4fWmcvcgsmzP8RleWxWTv6q2ZOd83OSvNVU9pTEdI9bwevg9A2/S/WWQGF73+URIRBVVVP9N9QMjzaNwPI+YQAAAAABJRU5ErkJggg==" alt="掃描加入光貓影像 LINE 官方帳號 @opimage" width="108" height="108"><div><strong>掃描加入官方 LINE</strong><p>手機可直接點選上方 LINE 連結。<br>電腦可用手機掃碼，貼上剛剛複製的合作需求。</p></div></div>
     <p class="contact-note">備註：此頁不會自動送出或保存問卷。請先複製內容，再於官方 LINE 貼上；價格、交付範圍及製作日期將由雙方確認。</p>
   </section></main>
-  <footer class="foot"><div class="shell footin"><div class="brand">OPMO IMAGE<small>光貓影像</small></div><div class="disclaimer">© OPMO IMAGE · Pricing Preview V5.3<br>價格為單次影像製作參考，特殊拍攝、人員、場地與額外後製另行評估。<br><a href="https://www.opmo-image.com/" target="_blank" rel="noopener noreferrer">官方網站 ↗</a></div></div></footer>
+  <footer class="foot"><div class="shell footin"><div class="brand">OPMO IMAGE<small>光貓影像</small></div><div class="disclaimer">© OPMO IMAGE · Pricing Preview V5.4<br>價格為單次影像製作參考，特殊拍攝、人員、場地與額外後製另行評估。<br><a href="https://www.opmo-image.com/" target="_blank" rel="noopener noreferrer">官方網站 ↗</a></div></div></footer>
   <script>
   (()=>{
     'use strict';
     // 單次案件參考價，日後可直接修改這裡。
-    const VIDEO = {trial:12800,one:15000,three:11000,six:10000};
+    const VIDEO = {trial:12800,commercialMin:15000,commercialMax:20000,restaurant:24000};
     const PHOTO = {six:6000,twelve:11000,twenty:17000};
-    const state = {service:'video',pack:'trial',photo:'six'};
-    const names = {video:'商業短影音',photo:'商業平面攝影',mixed:'照片＋影片整合製作'};
-    const pkgs = {trial:['首次影像體驗・1 支',1],one:['正式單支製作・1 支',1],three:['品牌企劃・3 支',3],six:['系列影像製作・6 支',6]};
+    const state = {service:'video',pack:'commercial',count:'1',photo:'six'};
+    const names = {video:'短影音製作',photo:'商業平面攝影',mixed:'照片＋影片整合製作'};
     const photoPkgs = {six:['單點影像補強・6 張',6],twelve:['品牌影像・12 張',12],twenty:['系列影像・20 張',20]};
     const id=x=>document.getElementById(x);
     const fmt=n=>'NT$'+n.toLocaleString('en-US');
-    function choose(group,attr,value){document.querySelectorAll('#'+group+' button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset[attr]===value)));}
+    const videoPrice=n=>'NT$ '+n.toLocaleString('en-US');
+    function choose(group,attr,value){document.querySelectorAll('#'+group+' button[data-'+attr+']').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset[attr]===value)));}
     function info(){
       if(state.service==='mixed') return {name:names.mixed,pkg:'照片＋影片整合製作',unit:'客製專案',price:'依需求報價',note:'依企劃、照片與影片製作規模評估，歡迎透過官方 LINE 詢價。',label:'參考價格'};
       if(state.service==='photo'){
@@ -153,29 +190,37 @@
         const start=state.photo!=='six';
         return {name:names.photo,pkg,unit:`${n} 張基本精修`,price:fmt(PHOTO[state.photo])+(start?' 起':''),note:'一般集中拍攝參考價格，特殊佈光、複雜修圖及多場景另行評估。',label:start?'專案參考起價':'參考價格'};
       }
-      const [pkg,n]=pkgs[state.pack];
-      if(state.pack==='trial')return {name:names.video,pkg,unit:'首次限定價／支',price:fmt(VIDEO.trial),note:'限首次合作、單一主題與輕量製作。',label:'參考價格'};
-      const per=VIDEO[state.pack];
-      return {name:names.video,pkg,unit:`${fmt(per)} 起／支`,price:fmt(n*per)+' 起',note:`共 ${n} 支，以每支 ${fmt(per)} 起估算。組合價格以可整合企劃、集中拍攝為基礎，正式費用依複雜度確認。`,label:'整案參考起價'};
+      if(state.pack==='trial'){
+        return {name:names.video,pkg:'首次影像體驗・1 支',unit:'每支固定價',price:videoPrice(VIDEO.trial),note:'新客限一次。適用單一主題、簡單場景、基礎拍攝與剪輯。',label:'首次合作價'};
+      }
+      if(state.pack==='restaurant'){
+        return {name:names.video,pkg:'餐廳故事短片・1 支',unit:'按案報價',price:videoPrice(VIDEO.restaurant)+' 起',note:'包含主廚訪談、前期企劃、一次到店拍攝與一支成片，隨片附一張 Reel 封面圖。',label:'專案參考起價'};
+      }
+      const range=videoPrice(VIDEO.commercialMin)+'～'+VIDEO.commercialMax.toLocaleString('en-US');
+      return {name:names.video,pkg:`商業短影音・${state.count} 支`,unit:'依製作範圍報價',price:range,note:'正式總價依腳本、拍攝時段與後製範圍確認。',label:'每支參考價'};
     }
     function render(){
       choose('service-choices','service',state.service);
       id('video-section').classList.toggle('hide',state.service!=='video');
       id('photo-section').classList.toggle('hide',state.service!=='photo');
       id('mixed-section').classList.toggle('hide',state.service!=='mixed');
-      id('step2-sub').textContent=state.service==='video'?'選擇影片支數，以下是每支參考起價。':state.service==='photo'?'選擇交付張數，了解一般集中拍攝的參考價格。':'照片與影片可以整合製作，依企劃內容客製報價。';
+      id('step2-sub').textContent=state.service==='video'?'先選製作方式，再確認預計製作支數。':state.service==='photo'?'選擇交付張數，了解一般集中拍攝的參考價格。':'照片與影片可以整合製作，依企劃內容客製報價。';
       choose('video-choices','package',state.pack);
+      id('video-count').classList.toggle('hide',state.pack!=='commercial');
+      choose('video-count-choices','count',state.count);
       choose('photo-choices','photo',state.photo);
       const d=info();
       id('sum-service').textContent=d.name;
       id('sum-package').textContent=d.pkg;
       id('sum-unit').textContent=d.unit;
       id('sum-price').textContent=d.price;
+      id('sum-price').classList.toggle('range-price',state.service==='video'&&state.pack==='commercial');
       id('sum-note').textContent=d.note;
       id('sum-price-label').textContent=d.label;
     }
     document.querySelectorAll('[data-service]').forEach(b=>b.addEventListener('click',()=>{state.service=b.dataset.service;render();}));
     document.querySelectorAll('[data-package]').forEach(b=>b.addEventListener('click',()=>{state.pack=b.dataset.package;render();}));
+    document.querySelectorAll('[data-count]').forEach(b=>b.addEventListener('click',()=>{state.count=b.dataset.count;render();}));
     document.querySelectorAll('[data-photo]').forEach(b=>b.addEventListener('click',()=>{state.photo=b.dataset.photo;render();}));
 
     // 只在本機整理文字；不寄信、不上傳資料到任何伺服器。
