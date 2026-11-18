@@ -2,9 +2,9 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#161b1b">
-  <meta name="description" content="OPMO IMAGE 光貓影像商業攝影與短影音參考報價，填寫合作需求問卷並透過官方 LINE 洽談。">
+  <meta name="description" content="OPMO IMAGE 光貓影像商業攝影與短影音參考報價，填寫合作需求問卷並送出，光貓影像將親自與你確認。">
   <title>合作詢價｜OPMO IMAGE 光貓影像</title>
   <style>
     :root{--ink:#18201e;--muted:#606a64;--cream:#f7f6f0;--white:#fffefa;--line:#dadfd7;--green:#324e3f;--accent:#bf6939;--pale:#e9ece5;--dark:#171d1c;--font:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif}
@@ -41,23 +41,44 @@
     .count-option:hover{border-color:var(--green)}
     .count-option[aria-pressed="true"]{background:var(--green);color:white;border-color:var(--green)}
     .sum-price.range-price{font-size:clamp(20px,3.4vw,25px);letter-spacing:-.02em}
+
+    /* V6: required answers, email submission and accessible confirmation */
+    .qitem>input,.qitem>textarea{font-size:16px}
+    .honeypot{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+    .field-error{color:#943e26;font-size:13px;margin:9px 0 0;line-height:1.6}
+    .qitem.has-error>input,.qitem.has-error>textarea,.qitem.has-error .option{border-color:#b14d30}
+    [data-selection-error="true"] .choice,[data-selection-error="true"] .count-option{border-color:#b14d30}
+    .submit-status{font-size:13px;line-height:1.7;margin:12px 0 0;color:var(--muted)}
+    .submit-status.error{color:#943e26}
+    .btn,.choice,.count-option{touch-action:manipulation;user-select:none;-webkit-user-select:none}
+    .btn:active{transform:scale(.985)}
+    dialog{width:min(460px,calc(100vw - 36px));max-height:calc(100dvh - 40px);overflow-y:auto;margin:auto;padding:34px 30px calc(30px + env(safe-area-inset-bottom,0px));border:1px solid #d3dbce;border-radius:10px;background:var(--white);color:var(--ink);box-shadow:0 24px 80px #10221940}
+    dialog::backdrop{background:#10221999}
+    dialog h2{font:clamp(26px,5vw,32px)/1.45 Georgia,"Noto Serif TC",serif;margin:12px 0 16px}
+    dialog p{line-height:1.85;overflow-wrap:anywhere}
+    dialog .eyebrow{margin:18px 0 0;font-size:10px}
+    .success-mark{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:#e8eee4;color:var(--green);font-size:26px}
+    .line-account{padding:12px 14px;background:#edf1e8;margin:20px 0 24px;font-size:14px}
+    dialog:not([open]){display:none}
+    @media(hover:none){.choice:hover,.option:hover,.count-option:hover{border-color:#d5dbd4}.btn.primary:hover{background:var(--green)}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
   </style>
 </head>
 <body>
   <header class="topbar"><div class="shell topin"><div class="brand">OPMO <span style="font-weight:400">IMAGE</span><small>光貓影像工作室</small></div><nav class="toplinks"><a href="https://www.opmo-image.com/" target="_blank" rel="noopener noreferrer">VIEW PORTFOLIO ↗</a></nav></div></header>
-  <section class="hero"><div class="shell hero-inner"><span class="eyebrow">CREATIVE PRODUCTION  /  EST. OPMO</span><h1>讓影像，<br>替品牌說好故事。</h1><p>把品牌想說的，拍成觀眾願意看的內容。<br>選擇影像服務與合作數量、填寫簡單問卷，再透過官方 LINE 聯繫。</p><div class="tags"><span class="tag">BRAND FILM</span><span class="tag">COMMERCIAL PHOTO</span><span class="tag">VISUAL CONTENT</span></div></div></section>
-  <main class="shell"><section class="intro"><div><div class="eyebrow">BUILD YOUR PROJECT</div><h2>合作詢價</h2></div><p>選擇方案、填寫需求，複製完整內容後透過官方 LINE 聯絡。<br>正式費用依製作規模與內容需求確認。</p></section>
+  <section class="hero"><div class="shell hero-inner"><span class="eyebrow">CREATIVE PRODUCTION  /  EST. OPMO</span><h1>讓影像，<br>替品牌說好故事。</h1><p>把品牌想說的，拍成觀眾願意看的內容。<br>選擇影像服務與合作數量，填寫需求並送出，<br>我會親自與你確認適合的製作方式。</p><div class="tags"><span class="tag">BRAND FILM</span><span class="tag">COMMERCIAL PHOTO</span><span class="tag">VISUAL CONTENT</span></div></div></section>
+  <main class="shell"><section class="intro"><div><div class="eyebrow">BUILD YOUR PROJECT</div><h2>合作詢價</h2></div><p>選擇方案、填寫需求，最後按下「送出合作需求」。<br>正式費用依製作規模與內容需求確認。</p></section>
   <div class="layout"><div>
     <section class="panel" aria-labelledby="step1-title"><div class="step-title"><div class="step-no">01</div><div><h3 id="step1-title">選擇影像服務</h3><p>先告訴我們，這次需要製作什麼內容。</p></div></div><div class="cards" id="service-choices">
-      <button class="choice" type="button" data-service="video" aria-pressed="true"><span class="title">短影音製作</span><span class="note">新客體驗／商業短影音／餐廳故事</span></button>
+      <button class="choice" type="button" data-service="video" aria-pressed="false"><span class="title">短影音製作</span><span class="note">新客體驗／商業短影音／餐廳故事</span></button>
       <button class="choice" type="button" data-service="photo" aria-pressed="false"><span class="title">商業平面攝影</span><span class="note">商品／餐飲／空間／形象</span></button>
       <button class="choice" type="button" data-service="mixed" aria-pressed="false"><span class="title">照片＋影片</span><span class="note">整合品牌視覺製作</span></button>
     </div></section>
-    <section class="panel" aria-labelledby="step2-title"><div class="step-title"><div class="step-no">02</div><div><h3 id="step2-title">選擇合作內容</h3><p id="step2-sub">先選製作方式，再確認預計製作支數。</p></div></div>
+    <section class="panel" aria-labelledby="step2-title"><div class="step-title"><div class="step-no">02</div><div><h3 id="step2-title">選擇合作內容</h3><p id="step2-sub">請先選擇影像服務，再確認合作內容。</p></div></div>
       <div id="video-section">
         <div class="video-options" id="video-choices">
           <div class="standard-offer">
-            <button class="choice" type="button" data-package="commercial" aria-pressed="true">
+            <button class="choice" type="button" data-package="commercial" aria-pressed="false">
               <span class="title">商業短影音</span>
               <span class="price">NT$ 15,000～20,000 <small>／支</small></span>
               <span class="note">適合已有明確拍攝主題的品牌。包含腳本整理、拍攝與剪輯。</span>
@@ -65,7 +86,7 @@
             <fieldset class="video-count" id="video-count">
               <legend>預計製作支數</legend>
               <div class="count-options" id="video-count-choices">
-                <button class="count-option" type="button" data-count="1" aria-pressed="true">1 支</button>
+                <button class="count-option" type="button" data-count="1" aria-pressed="false">1 支</button>
                 <button class="count-option" type="button" data-count="3" aria-pressed="false">3 支</button>
                 <button class="count-option" type="button" data-count="6" aria-pressed="false">6 支</button>
               </div>
@@ -86,18 +107,21 @@
         </div>
       </div>
       <div id="photo-section" class="hide"><div class="cards" id="photo-choices">
-        <button class="choice" type="button" data-photo="six" aria-pressed="true"><span class="title">單點影像補強 · 6 張</span><span class="price">NT$6,000</span><span class="note">單一主題・輕量拍攝與基本精修</span></button>
+        <button class="choice" type="button" data-photo="six" aria-pressed="false"><span class="title">單點影像補強 · 6 張</span><span class="price">NT$6,000</span><span class="note">單一主題・輕量拍攝與基本精修</span></button>
         <button class="choice" type="button" data-photo="twelve" aria-pressed="false"><span class="title">品牌影像 · 12 張</span><span class="price">NT$11,000 起</span><span class="note">一般商業拍攝與基本精修</span></button>
         <button class="choice" type="button" data-photo="twenty" aria-pressed="false"><span class="title">系列影像 · 20 張</span><span class="price">NT$17,000 起</span><span class="note">可集中完成的品牌影像系列</span></button>
       </div><div class="boxnote">商品、餐飲、空間及品牌形象皆可洽詢。以上是一般集中拍攝的參考起價；特殊佈光、精細修圖、跨場景與額外製作另行評估。</div></div>
-      <div id="mixed-section" class="hide"><p class="muted">如果想在一次企劃中同時完成照片與影片，請直接透過官方 LINE 告訴我們需求，我們會依整體內容提供報價。</p><div class="boxnote">整合專案以客製報價為主，不會把短影音和照片的數量機械相加。</div></div>
+      <div id="mixed-section" class="hide"><p class="muted">如果想在一次企劃中同時完成照片與影片，請填寫下方問卷，我會依整體內容提供報價。</p><div class="boxnote">整合專案以客製報價為主，不會把短影音和照片的數量機械相加。</div></div>
     </section>
 
     <section class="panel questionnaire" id="questionnaire" aria-labelledby="step3-title">
-      <div class="step-title"><div class="step-no">03</div><div><h3 id="step3-title">填寫合作需求問卷</h3><p>大約 3 分鐘，幫助我們在第一次對話前了解品牌與拍攝目標。</p></div></div>
-      <form id="intake" novalidate autocomplete="off">
+      <div class="step-title"><div class="step-no">03</div><div><h3 id="step3-title">填寫合作需求問卷</h3><p>所有題目皆為必填；複選題至少選一項。尚未確定的文字題可填「尚未確定」，無其他內容可填「無」。</p></div></div>
+      <form id="intake" novalidate>
+        <div id="form-error" class="form-error" role="alert"></div>
+        <div class="honeypot" aria-hidden="true"><label for="website-check">請留空此欄</label><input id="website-check" name="_honey" tabindex="-1" autocomplete="off"></div>
         <div class="qgroup"><span class="qlabel">01 / 關於你</span>
-          <div class="qitem"><label for="q-name">Q1. 你的名字／品牌名稱 <span class="req">＊</span></label><input id="q-name" name="name" required placeholder="請填寫姓名或品牌名稱" autocomplete="organization"></div>
+          <div class="qitem"><label for="q-name">Q1. 你的名字／品牌名稱 <span class="req">＊</span></label><input id="q-name" name="name" required placeholder="請填寫姓名或品牌名稱" autocomplete="name" maxlength="120"></div>
+          <div class="qitem"><label for="q-email">聯絡 Email <span class="req" aria-label="必填">＊</span></label><input id="q-email" type="email" name="email" required autocomplete="email" inputmode="email" autocapitalize="none" autocorrect="off" spellcheck="false" maxlength="254" placeholder="請填寫可收信的 Email"></div>
           <div class="qitem"><label for="q-ig">Q2. 你的 Instagram 帳號或品牌官網</label><input id="q-ig" name="social" placeholder="@yourbrand／網站連結；沒有可填「無」"></div>
           <fieldset class="qitem"><legend>Q3. 你的品牌／行業類型</legend><div class="option-grid">
             <label class="option"><input type="radio" name="industry" value="餐飲／美食"><span>餐飲／美食</span></label>
@@ -119,7 +143,7 @@
             <label class="option"><input type="checkbox" name="goal" value="累積網站／社群素材"><span>累積網站／社群素材</span></label>
             <label class="option"><input type="checkbox" name="goal" value="記錄故事／製作過程"><span>記錄故事／製作過程</span></label>
           </div></fieldset>
-          <div class="qitem"><label for="q-target">Q5. 你的目標受眾是誰？</label><input id="q-target" name="target" placeholder="例如：25–35 歲重視生活質感的上班族"></div>
+          <div class="qitem"><label for="q-target">Q5. 你的目標受眾是誰？</label><input id="q-target" name="target" placeholder="例如：25–35 歲重視生活質感的上班族；尚未確定也可填寫"></div>
         </div>
         <div class="qgroup"><span class="qlabel">03 / 關於目前的內容</span>
           <fieldset class="qitem"><legend>Q6. 你目前有在拍攝或經營影像內容嗎？</legend><div class="option-grid one-col">
@@ -137,7 +161,7 @@
             <label class="option"><input type="checkbox" name="pain" value="作品質感未達期待"><span>作品質感未達期待</span></label>
             <label class="option"><input type="checkbox" name="pain" value="其他／想先討論"><span>其他／想先討論</span></label>
           </div></fieldset>
-          <div class="qitem"><label for="q-reference">有喜歡的品牌、影像風格或參考作品嗎？<small>（可貼連結）</small></label><textarea id="q-reference" name="creative_reference_notes" rows="2" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="貼上 IG／YouTube 網址，或寫下喜歡的品牌、影片風格（可多筆）"></textarea></div>
+          <div class="qitem"><label for="q-reference">有喜歡的品牌、影像風格或參考作品嗎？<small>（可貼連結）</small></label><textarea id="q-reference" name="creative_reference_notes" rows="2" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="可貼 IG／YouTube 網址或描述風格；沒有參考可填「無」"></textarea></div>
         </div>
         <div class="qgroup"><span class="qlabel">04 / 關於這次合作</span>
           <fieldset class="qitem"><legend>Q8. 這次預算大概在哪個範圍？</legend><div class="option-grid one-col">
@@ -147,36 +171,33 @@
             <label class="option"><input type="radio" name="budget" value="NT$60,000 以上"><span>NT$60,000 以上</span></label>
             <label class="option"><input type="radio" name="budget" value="彈性，依需求討論"><span>彈性，依需求討論</span></label>
           </div></fieldset>
-          <div class="qitem"><label for="q-location">預計拍攝地點／檔期<small>（選填）</small></label><input id="q-location" name="location" placeholder="例如：台北市／11 月中旬"></div>
-          <div class="qitem"><label for="q-other">Q9. 還有什麼想讓我們知道的？</label><textarea id="q-other" name="other" rows="4" placeholder="介紹想拍攝的品項、情境、影片長度、交付用途，或任何特殊需求…"></textarea></div>
+          <div class="qitem"><label for="q-location">預計拍攝地點／檔期</label><input id="q-location" name="location" placeholder="例如：台北市／11 月中旬；未確定可填「尚未確定」"></div>
+          <div class="qitem"><label for="q-other">Q9. 還有什麼想讓我們知道的？</label><textarea id="q-other" name="other" rows="4" placeholder="介紹想拍攝的品項、情境、影片長度或特殊需求；沒有可填「無」"></textarea></div>
         </div>
       </form>
-      <p class="privacy-note">這份問卷不會自動傳送或儲存到光貓影像；填完後請點「複製完整方案＋問卷」，再貼到官方 LINE。</p>
+      <p class="privacy-note">按下「送出合作需求」後，資料將透過 FormSubmit 寄送至光貓影像，僅用於本次詢價與合作聯繫。</p>
     </section>
   </div><aside class="summary" aria-live="polite" aria-atomic="false"><div class="sum-eyebrow">YOUR SELECTION / 001</div><h3>詢價摘要</h3><div class="sum-row"><span>服務類型</span><span id="sum-service">短影音製作</span></div><div class="sum-row"><span>合作內容</span><span id="sum-package">商業短影音・1 支</span></div><div class="sum-row"><span>計價方式</span><span id="sum-unit">依製作範圍報價</span></div><div class="sum-price-label" id="sum-price-label">每支參考價</div><div class="sum-price range-price" id="sum-price">NT$ 15,000～20,000</div><div class="total-note" id="sum-note">正式總價依腳本、拍攝時段與後製範圍確認。</div>
-    <button class="btn primary" type="button" id="copy-enquiry">▣ 複製完整方案＋問卷內容</button>
-    <div id="copy-status" class="copy-status" role="status" aria-live="polite"></div>
-    <div id="copy-fallback" class="hide" aria-label="詢價內容備用複製區"><label for="copy-text">若無法自動複製，請長按選取以下內容：</label><textarea id="copy-text" readonly rows="6"></textarea></div>
-    <a class="btn secondary contact-jump" href="#contact">前往官方 LINE 聯絡 ↓</a>
-    <p class="help">先複製方案與問卷，再點選下方官方 LINE 貼上訊息。此頁面不會直接送出任何資料。</p></aside></div>
-  <section class="contact-panel" id="contact" aria-labelledby="contact-title">
-    <div class="eyebrow">CONTACT / START A PROJECT</div>
-    <h2 id="contact-title">有拍攝需求？歡迎直接聊聊。</h2>
-    <p>填寫上方問卷並複製完整內容後，透過官方 LINE 聯絡我們。<br>這樣可以省下來回詢問的時間，讓我們更快了解你的需求。</p>
-    <div class="contact-links">
-      <a class="contact-link" href="https://line.me/R/ti/p/%40opimage" aria-label="透過官方 LINE 聯絡光貓影像"><span class="contact-platform">OFFICIAL LINE</span><strong>@opimage</strong><span aria-hidden="true">↗</span></a>
-    </div>
-    <div class="qr-row"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASgAAAEoAQAAAADDfFG0AAABfklEQVR42u2Zy27EMAwDOUX//5fZg2Tl5WB7bAHmkrWXp4FE0wrWL54vRRVVVFH9NdW3JFG/3W9ZmLVyeN15yUXNwpIQkmc3vB68GhCWkC0Zee2G15vKVDMOp/jXB5UbFFdg4XXrx0UJIxkjfCqy8Lry4tSQc0rObngdD74tqxNvDhZeFxVCEgjLGr9n/RNet/qim9G99CmLJa9u6ku2sBGCpmgByV97/6pisvB415RbeD1VRshgOtnTMSP+tfV7jMGrEydLkPp6rS9b42Irw8a/Xvyrq8ptYqLv3OH1zPcdu6RyeNr65QU0vJ7565jf0FlMc1aG17W+zjOJRrSGYDkfd/5FNaLLtmYQFv/a54m+PpZzSZLrGknyxK4fPemBbsB1AlTdhdfOv2RVCOtPQzh5Ys/r+D6kFVtn0+G1UQFaE692MqDX4fWmcvcgsmzP8RleWxWTv6q2ZOd83OSvNVU9pTEdI9bwevg9A2/S/WWQGF73+URIRBVVVP9N9QMjzaNwPI+YQAAAAABJRU5ErkJggg==" alt="掃描加入光貓影像 LINE 官方帳號 @opimage" width="108" height="108"><div><strong>掃描加入官方 LINE</strong><p>手機可直接點選上方 LINE 連結。<br>電腦可用手機掃碼，貼上剛剛複製的合作需求。</p></div></div>
-    <p class="contact-note">備註：此頁不會自動送出或保存問卷。請先複製內容，再於官方 LINE 貼上；價格、交付範圍及製作日期將由雙方確認。</p>
-  </section></main>
-  <footer class="foot"><div class="shell footin"><div class="brand">OPMO IMAGE<small>光貓影像</small></div><div class="disclaimer">© OPMO IMAGE · Pricing Preview V5.4<br>價格為單次影像製作參考，特殊拍攝、人員、場地與額外後製另行評估。<br><a href="https://www.opmo-image.com/" target="_blank" rel="noopener noreferrer">官方網站 ↗</a></div></div></footer>
+    <button class="btn primary" type="submit" form="intake" id="submit-enquiry" disabled>送出合作需求</button>
+    <p id="submit-status" class="submit-status" role="status" aria-live="polite"></p>
+    <p class="help">請完成所有必填題目後送出。<br>送出後，我會親自與您確認需求、費用與檔期。</p></aside></div>
+</main>
+  <footer class="foot"><div class="shell footin"><div class="brand">OPMO IMAGE<small>光貓影像</small></div><div class="disclaimer">© OPMO IMAGE · 合作需求表 V6<br>價格為單次影像製作參考，特殊拍攝、人員、場地與額外後製另行評估。<br><a href="https://www.opmo-image.com/" target="_blank" rel="noopener noreferrer">官方網站 ↗</a></div></div></footer>
+  <dialog id="success-dialog" aria-labelledby="success-title" aria-describedby="success-message">
+    <div class="success-mark" aria-hidden="true">✓</div>
+    <p class="eyebrow">THANK YOU / OPMO IMAGE</p>
+    <h2 id="success-title">謝謝您的填寫</h2>
+    <p id="success-message">再麻煩您到官方 LINE，提供您的名字與 Email，我會親自與您確認。</p>
+    <p class="line-account">官方 LINE：<strong>@opimage</strong></p>
+    <button type="button" class="btn primary" id="close-success" autofocus>我知道了</button>
+  </dialog>
   <script>
   (()=>{
     'use strict';
     // 單次案件參考價，日後可直接修改這裡。
     const VIDEO = {trial:12800,commercialMin:15000,commercialMax:20000,restaurant:24000};
     const PHOTO = {six:6000,twelve:11000,twenty:17000};
-    const state = {service:'video',pack:'commercial',count:'1',photo:'six'};
+    const state = {service:null,pack:null,count:null,photo:null};
     const names = {video:'短影音製作',photo:'商業平面攝影',mixed:'照片＋影片整合製作'};
     const photoPkgs = {six:['單點影像補強・6 張',6],twelve:['品牌影像・12 張',12],twenty:['系列影像・20 張',20]};
     const id=x=>document.getElementById(x);
@@ -184,7 +205,9 @@
     const videoPrice=n=>'NT$ '+n.toLocaleString('en-US');
     function choose(group,attr,value){document.querySelectorAll('#'+group+' button[data-'+attr+']').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset[attr]===value)));}
     function info(){
-      if(state.service==='mixed') return {name:names.mixed,pkg:'照片＋影片整合製作',unit:'客製專案',price:'依需求報價',note:'依企劃、照片與影片製作規模評估，歡迎透過官方 LINE 詢價。',label:'參考價格'};
+      if(!state.service) return {name:'尚未選擇',pkg:'尚未選擇',unit:'選擇後顯示',price:'選擇後顯示',note:'請先選擇影像服務與合作內容。',label:'參考價格'};
+      if(state.service==='video'&&!state.pack||state.service==='photo'&&!state.photo) return {name:names[state.service],pkg:'尚未選擇',unit:'選擇後顯示',price:'選擇後顯示',note:'請選擇合作內容。',label:'參考價格'};
+      if(state.service==='mixed') return {name:names.mixed,pkg:'照片＋影片整合製作',unit:'客製專案',price:'依需求報價',note:'依企劃、照片與影片製作規模評估，請填寫下方需求。',label:'參考價格'};
       if(state.service==='photo'){
         const [pkg,n]=photoPkgs[state.photo];
         const start=state.photo!=='six';
@@ -197,14 +220,14 @@
         return {name:names.video,pkg:'餐廳故事短片・1 支',unit:'按案報價',price:videoPrice(VIDEO.restaurant)+' 起',note:'包含主廚訪談、前期企劃、一次到店拍攝與一支成片，隨片附一張 Reel 封面圖。',label:'專案參考起價'};
       }
       const range=videoPrice(VIDEO.commercialMin)+'～'+VIDEO.commercialMax.toLocaleString('en-US');
-      return {name:names.video,pkg:`商業短影音・${state.count} 支`,unit:'依製作範圍報價',price:range,note:'正式總價依腳本、拍攝時段與後製範圍確認。',label:'每支參考價'};
+      return {name:names.video,pkg:state.count?`商業短影音・${state.count} 支`:'商業短影音・尚未選擇支數',unit:'依製作範圍報價',price:range,note:'正式總價依腳本、拍攝時段與後製範圍確認。',label:'每支參考價'};
     }
     function render(){
       choose('service-choices','service',state.service);
       id('video-section').classList.toggle('hide',state.service!=='video');
       id('photo-section').classList.toggle('hide',state.service!=='photo');
       id('mixed-section').classList.toggle('hide',state.service!=='mixed');
-      id('step2-sub').textContent=state.service==='video'?'先選製作方式，再確認預計製作支數。':state.service==='photo'?'選擇交付張數，了解一般集中拍攝的參考價格。':'照片與影片可以整合製作，依企劃內容客製報價。';
+      id('step2-sub').textContent=!state.service?'請先選擇影像服務，再確認合作內容。':state.service==='video'?'先選製作方式，再確認預計製作支數。':state.service==='photo'?'選擇交付張數，了解一般集中拍攝的參考價格。':'照片與影片可以整合製作，依企劃內容客製報價。';
       choose('video-choices','package',state.pack);
       id('video-count').classList.toggle('hide',state.pack!=='commercial');
       choose('video-count-choices','count',state.count);
@@ -218,62 +241,121 @@
       id('sum-note').textContent=d.note;
       id('sum-price-label').textContent=d.label;
     }
-    document.querySelectorAll('[data-service]').forEach(b=>b.addEventListener('click',()=>{state.service=b.dataset.service;render();}));
-    document.querySelectorAll('[data-package]').forEach(b=>b.addEventListener('click',()=>{state.pack=b.dataset.package;render();}));
-    document.querySelectorAll('[data-count]').forEach(b=>b.addEventListener('click',()=>{state.count=b.dataset.count;render();}));
-    document.querySelectorAll('[data-photo]').forEach(b=>b.addEventListener('click',()=>{state.photo=b.dataset.photo;render();}));
+    document.querySelectorAll('[data-service]').forEach(b=>b.addEventListener('click',()=>{if(state.service!==b.dataset.service){state.service=b.dataset.service;state.pack=null;state.count=null;state.photo=null;}markChanged();clearSelectionErrors();render();}));
+    document.querySelectorAll('[data-package]').forEach(b=>b.addEventListener('click',()=>{if(state.pack!==b.dataset.package){state.pack=b.dataset.package;state.count=null;}markChanged();clearSelectionErrors();render();}));
+    document.querySelectorAll('[data-count]').forEach(b=>b.addEventListener('click',()=>{state.count=b.dataset.count;markChanged();clearSelectionErrors();render();}));
+    document.querySelectorAll('[data-photo]').forEach(b=>b.addEventListener('click',()=>{state.photo=b.dataset.photo;markChanged();clearSelectionErrors();render();}));
 
-    // 只在本機整理文字；不寄信、不上傳資料到任何伺服器。
-    function textVal(field){return (document.querySelector(`[name="${field}"]`)?.value||'').trim()||'（未填）';}
-    function checkedVals(field){const v=[...document.querySelectorAll(`[name="${field}"]:checked`)].map(el=>el.value);return v.length?v.join('、'):'（未填）';}
-    function enquiryText(){
-      const d=info();
-      return [
-        '【OPMO IMAGE｜商業影像合作詢價】',
-        '服務類型：'+d.name,
-        '合作方案：'+d.pkg,
-        '參考計價：'+d.unit,
-        d.label+'：'+d.price,
-        '＊實際價格與交付項目須經正式確認。',
-        '',
-        '【需求問卷】',
-        'Q1. 姓名／品牌：'+textVal('name'),
-        'Q2. IG／官網：'+textVal('social'),
-        'Q3. 品牌類型：'+checkedVals('industry'),
-        'Q4. 製作目標：'+checkedVals('goal'),
-        'Q5. 目標受眾：'+textVal('target'),
-        'Q6. 目前內容經營狀態：'+checkedVals('status'),
-        'Q7. 目前困難：'+checkedVals('pain'),
-        '參考作品：'+textVal('creative_reference_notes'),
-        'Q8. 預算範圍：'+checkedVals('budget'),
-        '拍攝地點／檔期：'+textVal('location'),
-        'Q9. 其他需求：'+textVal('other'),
-        '',
-        '透過光貓影像報價頁整理，尚未正式確認合作。'
-      ].join('\n');
+    const form=id('intake');
+    const submitBtn=id('submit-enquiry');
+    const dialog=id('success-dialog');
+    const FORM_ENDPOINT='https://formsubmit.co/ajax/opmo.image@gmail.com';
+    let pending=false,submitted=false;
+    let submissionId=makeSubmissionId();
+    function makeSubmissionId(){return 'OPMO-'+(globalThis.crypto?.randomUUID?.()||Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,10));}
+    function markChanged(){
+      if(submitted){submissionId=makeSubmissionId();submitted=false;}
+      if(!pending){submitBtn.disabled=false;submitBtn.textContent='送出合作需求';submitBtn.removeAttribute('aria-label');id('submit-status').textContent='';}
     }
-    const copyBtn=id('copy-enquiry');
-    copyBtn.addEventListener('click',async()=>{
-      const name=id('q-name');
-      if(!name.value.trim()){
-        id('copy-status').textContent='請先填寫 Q1 姓名／品牌名稱，再複製詢價內容。';
-        id('copy-status').classList.add('error');
-        name.focus();name.scrollIntoView({behavior:'smooth',block:'center'});
-        return;
-      }
-      const content=enquiryText();let success=false;
-      if(navigator.clipboard && window.isSecureContext){
-        try{await navigator.clipboard.writeText(content);success=true}catch(e){}
-      }
-      if(!success){
-        const temp=document.createElement('textarea');temp.value=content;temp.setAttribute('readonly','');temp.style.cssText='position:fixed;top:0;left:-1000px;opacity:0';document.body.append(temp);temp.focus();temp.select();
-        try{success=document.execCommand('copy')}catch(e){}temp.remove();
-      }
-      id('copy-status').classList.toggle('error',!success);
-      id('copy-status').textContent=success?'✓ 已複製完整方案與問卷內容，請點選官方 LINE 貼上訊息。':'瀏覽器限制了自動複製，請長按下方內容手動複製。';
-      id('copy-fallback').classList.toggle('hide',success);
-      if(!success){id('copy-text').value=content;id('copy-text').focus();id('copy-text').select();}
+    const selectionGroups=['service-choices','video-choices','video-count-choices','photo-choices'];
+    selectionGroups.forEach(group=>{
+      const el=id(group);el.setAttribute('role','group');
+      const message=document.createElement('p');message.className='field-error';message.id=group+'-error';message.hidden=true;el.after(message);
+      el.setAttribute('aria-describedby',message.id);
     });
+    const groupLabels={'service-choices':'影像服務（必選）','video-choices':'短影音合作內容（必選）','video-count-choices':'預計製作支數（必選）','photo-choices':'照片合作內容（必選）'};
+    selectionGroups.forEach(group=>id(group).setAttribute('aria-label',groupLabels[group]));
+    function clearSelectionErrors(){selectionGroups.forEach(group=>{id(group).removeAttribute('data-selection-error');id(group+'-error').hidden=true;});}
+    const items=[...form.querySelectorAll('.qitem')];
+    items.forEach((item,index)=>{
+      const first=item.querySelector('input,textarea');
+      const heading=item.querySelector('legend,label');
+      if(!heading.querySelector('.req')){const star=document.createElement('span');star.className='req';star.textContent=' ＊';star.setAttribute('aria-label','必填');heading.append(star);}
+      const message=document.createElement('p');message.className='field-error';message.id='question-error-'+index;message.hidden=true;item.append(message);
+      item.dataset.errorId=message.id;
+      if(item.tagName==='FIELDSET'){
+        item.setAttribute('aria-describedby',message.id);
+        item.querySelectorAll('input[type="radio"]').forEach(input=>input.required=true);
+      }else{first.required=true;first.maxLength=first.type==='email'?254:first.tagName==='TEXTAREA'?4000:500;}
+      item.querySelectorAll('input,textarea').forEach(input=>input.setAttribute('aria-describedby',message.id));
+    });
+    function setItemError(item,message){
+      const error=id(item.dataset.errorId);error.textContent=message;error.hidden=!message;item.classList.toggle('has-error',!!message);
+      item.querySelectorAll('input,textarea').forEach(input=>{if(message)input.setAttribute('aria-invalid','true');else input.removeAttribute('aria-invalid');});
+    }
+    function validate(){
+      clearSelectionErrors();let first=null;
+      function requireSelection(group,valid,message){
+        if(valid)return;id(group).setAttribute('data-selection-error','true');id(group+'-error').textContent=message;id(group+'-error').hidden=false;
+        first=first||id(group).querySelector('button');
+      }
+      requireSelection('service-choices',!!state.service,'請選擇這次需要的影像服務。');
+      if(state.service==='video'){
+        requireSelection('video-choices',!!state.pack,'請選擇短影音合作內容。');
+        if(state.pack==='commercial')requireSelection('video-count-choices',!!state.count,'請選擇預計製作支數。');
+      }
+      if(state.service==='photo')requireSelection('photo-choices',!!state.photo,'請選擇照片合作內容。');
+      items.forEach(item=>{
+        const input=item.querySelector('input,textarea');let message='';
+        if(item.tagName==='FIELDSET'){
+          if(!item.querySelector('input:checked'))message=input.type==='checkbox'?'請至少勾選一項。':'請選擇一項。';
+        }else if(!input.value.trim())message='此題為必填，請填寫內容。';
+        else if(input.type==='email'&&!input.validity.valid)message='請填寫有效的 Email，例如 name@example.com。';
+        else if(!input.validity.valid)message='請檢查此欄位的填寫內容。';
+        setItemError(item,message);if(message)first=first||input;
+      });
+      id('form-error').classList.toggle('show',!!first);
+      id('form-error').textContent=first?'尚有必填題目未完成，請檢查標示的欄位。':'';
+      if(first){first.focus({preventScroll:true});first.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'});}
+      return !first;
+    }
+    form.addEventListener('input',event=>{
+      markChanged();const item=event.target.closest('.qitem');
+      if(item){const input=item.querySelector('input,textarea');const valid=item.tagName==='FIELDSET'?!!item.querySelector('input:checked'):!!input.value.trim()&&input.validity.valid;if(valid)setItemError(item,'');}
+    });
+    function value(name){return form.elements.namedItem(name).value.trim();}
+    function selected(name){return [...form.querySelectorAll(`[name="${name}"]:checked`)].map(el=>el.value).join('、');}
+    function payload(){
+      const d=info();return {
+        name:value('name'),email:value('email'),
+        _subject:'【光貓網站詢價】'+value('name').replace(/[\r\n]/g,' ')+'｜'+d.pkg,
+        _template:'table',_captcha:'false',_honey:form.elements.namedItem('_honey').value,
+        '詢價編號':submissionId,'服務類型':d.name,'合作內容':d.pkg,'計價方式':d.unit,[d.label]:d.price,
+        'IG／品牌官網':value('social'),'品牌／行業類型':selected('industry'),'製作目標':selected('goal'),
+        '目標受眾':value('target'),'目前內容經營狀態':selected('status'),'目前困難':selected('pain'),
+        '參考作品':value('creative_reference_notes'),'預算範圍':selected('budget'),'拍攝地點／檔期':value('location'),
+        '其他需求':value('other'),'填寫時間':new Date().toISOString(),'來源網頁':'https://opmoimage.github.io/opmo-pricing/'
+      };
+    }
+    function setBusy(busy){
+      pending=busy;submitBtn.disabled=busy;submitBtn.setAttribute('aria-busy',String(busy));
+      form.querySelectorAll('input,textarea').forEach(el=>el.disabled=busy);
+      document.querySelectorAll('[data-service],[data-package],[data-count],[data-photo]').forEach(el=>el.disabled=busy);
+    }
+    function showConfirmation(){if(!dialog.open)dialog.showModal();}
+    id('close-success').addEventListener('click',()=>dialog.close());
+    form.addEventListener('submit',async event=>{
+      event.preventDefault();if(pending)return;
+      if(submitted){showConfirmation();return;}
+      if(!validate())return;
+      // A filled honeypot must not produce a false success acknowledgement.
+      if(value('_honey')){id('submit-status').textContent='無法送出，請重新整理後再試。';id('submit-status').classList.add('error');return;}
+      const data=payload();setBusy(true);submitBtn.textContent='送出中…';id('submit-status').classList.remove('error');id('submit-status').textContent='正在傳送合作需求，請稍候。';
+      const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),25000);
+      try{
+        const response=await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data),signal:controller.signal});
+        const result=await response.json();
+        // Only the mail service's explicit success can open the thank-you dialog.
+        if(!response.ok||!(result.success===true||result.success==='true'))throw new Error('Submission was not accepted');
+        submitted=true;submitBtn.textContent='已送出';submitBtn.setAttribute('aria-label','已送出，查看確認訊息');
+        id('submit-status').textContent='合作需求已送出。';showConfirmation();
+      }catch(error){
+        submitBtn.textContent='重新送出合作需求';id('submit-status').classList.add('error');
+        id('submit-status').textContent=error.name==='AbortError'?'目前無法確認送出結果，填寫內容已保留。請稍後再試，或聯絡光貓影像 opmo.image@gmail.com。':'目前未能送出，填寫內容已保留。請檢查網路後重試；若持續失敗，請聯絡 opmo.image@gmail.com。';
+      }finally{clearTimeout(timeout);setBusy(false);}
+    });
+    submitBtn.disabled=false;
+
     render();
   })();
   </script>
